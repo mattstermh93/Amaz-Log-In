@@ -6,15 +6,13 @@ from app.forms import LoginForm, RegistrationForm
 def register():
     register_form = RegistrationForm()
     if register_form.validate_on_submit():
-        flash('Thank you for signing in!! {}!'.format(register_form.username.data))
         return redirect(url_for('login'))
-    return render_template('login.html', form=register_form)
+    return render_template('login2.html', form=register_form)
 
 @app.route('/')
-@app.route('/login1', methods=['GET', 'POST'])
+@app.route('/login2', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
-        flash('Thank you for logging in {}!'.format(login_form.username.data))
         return redirect(url_for('login2'))
     return render_template('login2.html', form=login_form)
