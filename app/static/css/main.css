@@ -2,6 +2,10 @@ body {
   overflow-x: hidden;
 }
 
+.btn {
+  width: 100%;
+}
+
 .a-box {
     display: block;
     border-radius: 4px;
