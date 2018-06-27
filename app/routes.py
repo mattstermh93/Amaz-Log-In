@@ -16,3 +16,10 @@ def login():
     if login_form.validate_on_submit():
         return redirect(url_for('login2'))
     return render_template('login2.html', form=login_form)
+
+@app.route('/register', methods=['GET', 'POST'])
+def register2():
+    register_form = RegistrationForm2()
+    if register_form.validate_on_submit():
+        return redirect(url_for('register'))
+    return render_template('index.html', form=register_form

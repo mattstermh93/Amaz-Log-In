@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign in {% endblock %}
+
+{% block app_content %}
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 offset-md-4 a-box">
+          <h1> Create account </h1>
+          {{ wtf.quick_form(form) }}
+          <span> ▼ </span>
+
+      </div>
+    </div> <!--end form col -->
+      <div class="col-md-4 offset-md-4">
+        <span class ="a-button-inner btn-primary btn center amz-color">
+          <a id="createAccountSubmit" tabindex="6" href="#" class="a-button-text" role="button">
+          Create your Amazon account
+        </a>
+      </span>
+    </div>
+  </div> <!--end main row -->
+    <span class ="tab">Already have an account? Sign in
+    </span>
+</div> <!--end main container -->
+
+
+
+
+
+  </div>
+</div>
+{% endblock %}

@@ -10,6 +10,14 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email Address', validators=[DataRequired(), Email()])
     submit = SubmitField('Submit')
 
+class RegistrationForm2(FlaskForm):
+    username = StringField('Your name', validators=[Length(min=15, max=24), DataRequired()])
+    email = StringField('Email Address', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField('Re-enter password', validators=[DataRequired(), EqualTo('password', message='Passwords must match')])
+
+    submit = SubmitField('Create your Amazon account')
+
 # class RegistrationForm2(FlaskForm):
 #     password = PasswordField('Password', validators=[DataRequired()])
 #     submit = SubmitField('Submit')
