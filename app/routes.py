@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, redirect, url_for, flash
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, RegistrationForm2
 
 @app.route('/login', methods=['GET', 'POST'])
 def register():
@@ -22,4 +22,4 @@ def register2():
     register_form = RegistrationForm2()
     if register_form.validate_on_submit():
         return redirect(url_for('register'))
-    return render_template('index.html', form=register_form
+    return render_template('register.html', form=register_form)
