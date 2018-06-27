@@ -28,7 +28,7 @@ def register2():
         return redirect(url_for('login'))
     return render_template('register.html', form=register_form)
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login2', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
