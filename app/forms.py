@@ -8,7 +8,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class RegistrationForm(FlaskForm):
-    email = StringField('Email (phone for mobile accounts)', validators=[DataRequired(), Email()])
+    username = StringField('Email (phone for mobile accounts)', validators=[DataRequired(), Email()])
     submit = SubmitField('Submit')
 
 class RegistrationForm2(FlaskForm):

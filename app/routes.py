@@ -10,16 +10,26 @@ from werkzeug.urls import url_parse
 def login2():
     register_form = RegistrationForm()
     if register_form.validate_on_submit():
-        return redirect(url_for('login'))
-    return render_template('login.html', form=register_form)
 
-#this was my original login page2 (the pw one)
-# @app.route('/login2', methods=['GET', 'POST'])
-# def login():
-#     login_form = LoginForm()
-#     if login_form.validate_on_submit():
-#         return redirect(url_for('index'))
-#     return render_template('login2.html', form=login_form)
+        user = User.query.filter_by(username=register_form.username.data).first()
+        if user is None or not user.check_password(register_form.password.data):
+            flash('Invalid login credentials')
+            return redirect(url_for('login'))
+        login_user(user, remember=register_form.remember_me.data)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        flash('Thanks for logging in {}!'.format(current_user.username))
+        return redirect(next_page)
+    return render_template('login2.html', form=register_form)
+
+# this was my original login page2 (the pw one)
+@app.route('/login2', methods=['GET', 'POST'])
+def login():
+    login_form = LoginForm()
+    if login_form.validate_on_submit():
+        return redirect(url_for('index'))
+    return render_template('login2.html', form=login_form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register2():
@@ -27,27 +37,6 @@ def register2():
     if register_form.validate_on_submit():
         return redirect(url_for('login'))
     return render_template('register.html', form=register_form)
-
-@app.route('/login2', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    login_form = LoginForm()
-    if login_form.validate_on_submit():
-        user = User.query.filter_by(username=login_form.username.data).first()
-        if user is None or not user.check_password(login_form.password.data):
-            flash('Invalid login credentials')
-            return redirect(url_for('login'))
-        login_user(user, remember=login_form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
-        flash('Thanks for logging in {}!'.format(current_user.username))
-        return redirect(next_page)
-    return render_template('login2.html', form=login_form)
-
-@app.route('/register', methods=['GET', 'POST'])
-def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     register_form = RegistrationForm()
@@ -59,7 +48,6 @@ def register():
         flash('Congratulations, you are now registered!')
         return redirect(url_for('login'))
     return render_template('register.html', form=register_form)
-
 
 @app.route('/index')
 def index():
