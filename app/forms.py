@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, EqualTo, Email, Length
+from wtforms.validators import DataRequired, EqualTo, Email, Length, ValidationError
+from app.models import User
 
 class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
@@ -18,6 +19,12 @@ class RegistrationForm2(FlaskForm):
 
     submit = SubmitField('Create your Amazon account')
 
-# class RegistrationForm2(FlaskForm):
-#     password = PasswordField('Password', validators=[DataRequired()])
-#     submit = SubmitField('Submit')
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user is not None:
+            raise ValidationError('Username already taken.')
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError('Email already taken.')
