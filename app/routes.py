@@ -2,9 +2,9 @@ from app import app
 from flask import render_template, redirect, url_for, flash
 from app.forms import LoginForm, RegistrationForm, RegistrationForm2
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/login', methods=['GET', 'POST'])
-def register():
+def login2():
     register_form = RegistrationForm()
     if register_form.validate_on_submit():
         return redirect(url_for('login2'))
