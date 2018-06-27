@@ -14,7 +14,7 @@ def register():
 def login():
     login_form = LoginForm()
     if login_form.validate_on_submit():
-        return redirect(url_for('login2'))
+        return redirect(url_for('index'))
     return render_template('login2.html', form=login_form)
 
 @app.route('/register', methods=['GET', 'POST'])
