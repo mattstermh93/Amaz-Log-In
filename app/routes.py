@@ -33,13 +33,13 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register2():
+    # register_form = RegistrationForm2()
+    # if register_form.validate_on_submit():
+    #     return redirect(url_for('login'))
+    # return render_template('register.html', form=register_form)
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('index'))
     register_form = RegistrationForm2()
-    if register_form.validate_on_submit():
-        return redirect(url_for('login'))
-    return render_template('register.html', form=register_form)
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    register_form = RegistrationForm()
     if register_form.validate_on_submit():
         user = User(username=register_form.username.data, email=register_form.email.data)
         user.set_password(register_form.password.data)
