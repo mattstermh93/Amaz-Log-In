@@ -1,22 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %} Sign in {% endblock %}
+{% block title %} Create your Account {% endblock %}
+
+{% block navbar %}
+<nav>
+  <img src="http://placehold.it/103x31">
+</nav>
+{% endblock %}
 
 {% block app_content %}
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 offset-md-4 a-box">
-          <h1> Create account </h1>
-          {{ wtf.quick_form(form) }}
-            <span class ="tab">Already have an account? <a href='/login'</a>Sign in
-          </span>
-        </div>
-      </div> <!--end form col -->
-    <div class="col-md-4 offset-md-4">
-  </div>
-</div> <!--end main row -->
-</div> <!--end main container -->
-</div>
+<div class="row container">
+  <div class="col-md-6 form-border top-pad">
+    <h2> Create account </h2>
+      {{ wtf.quick_form(form) }}
+      <span class ="tab">Already have an account? <a href='/login'</a>Sign in </span>
+    </div>
+  </div> <!--end form col -->
 {% endblock %}
