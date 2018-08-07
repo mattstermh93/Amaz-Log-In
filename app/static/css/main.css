@@ -118,9 +118,22 @@ p:after {
 }
 
 .top-pad {
+  padding-top: 50px;
+}
+
+.top-pad-box {
   padding-top: 10px;
 }
 
 .form-border {
   border: 1px solid black;
+}
+
+.centerall {
+  position: absolute;
+  left: 35%;
+}
+
+.centernav {
+  display: inline-block;
 }
