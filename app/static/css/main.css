@@ -121,6 +121,10 @@ p:after {
   padding-top: 50px;
 }
 
+.bottom-pad {
+  padding-bottom: 15px;
+}
+
 .top-pad-box {
   padding-top: 10px;
 }
