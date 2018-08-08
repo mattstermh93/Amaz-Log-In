@@ -132,8 +132,10 @@ p:after {
 .centerall {
   position: absolute;
   left: 35%;
+  width: 100%;
 }
 
 .centernav {
-  display: inline-block;
+  display: block;
+  width: 100%;
 }

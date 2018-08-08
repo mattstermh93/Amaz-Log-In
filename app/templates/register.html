@@ -2,17 +2,11 @@
 
 {% block title %} Create your Account {% endblock %}
 
-{% block navbar %}
-<nav class ="row container centernav">
-  <div class="col-md-6 col-md-offset 4">
-  <img src="http://placehold.it/183x51">
-</div>
-</nav>
-{% endblock %}
+
 
 {% block app_content %}
 <div class="row container centerall top-pad">
-  <div class="col-md-6 col-sm-6 form-border top-pad-box">
+  <div class="col-md-4 col-sm-6 form-border top-pad-box">
     <h2> Create account </h2>
       {{ wtf.quick_form(form) }}
       <span class ="tab">Already have an account? <a href='/login'</a>Sign in </span>
